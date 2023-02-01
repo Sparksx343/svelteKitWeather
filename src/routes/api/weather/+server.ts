@@ -6,6 +6,6 @@ const FETCH_OPTIONS = {
     }
 };
 
-export const GET = () => {
-    return new Response(JSON.stringify({message: 'Hey soy el server y front al mismo tiempo'}), {status: 200})
+export const GET = (evt: string) => {
+    return new Response(JSON.stringify({message: evt}), {status: 200})
 }

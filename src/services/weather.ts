@@ -6,10 +6,14 @@
             'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
         }
     };
+    const test = {
+        method: 'GET',
+    };
 
     /// Export de la data
     export async function getWeatherFrom (query='Tuxtla%20Gutierrez') {
         // Realizamos la peticion
+       await  fetch(`/api/weather?p=test`, test)
     const response = await fetch(`https://weatherapi-com.p.rapidapi.com/current.json?q=${query}`, FETCH_OPTIONS)
     const data = await response.json()
         const {location, current} = data
