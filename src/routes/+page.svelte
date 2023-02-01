@@ -1,45 +1,42 @@
 <script>
-    const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': 'ea258607a0msh381abbb0c9ee007p1e1887jsn7e6523e1c211',
-		'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
-	}
-};
-
-const weatherPromise = fetch('https://weatherapi-com.p.rapidapi.com/current.json?q=Tuxtla%20Gutierrez', options)
-	.then(response => response.json())
-	.then(response => {
-        console.log(response);
-        return response
-        /* const {location, current} = response
-        const {country, localtime, name} = location
-        const {condition, humidity, feelslike_c, is_day, temp_c, wind_kph, wind_dir} = current
-        const {code,text} = condition
-        return {
-            conditionCode: code,
-            conditionText: text,
-            country,
-            localtime,
-            name,humidity,
-            isDay: is_day,
-            feelsLike: feelslike_c,
-            temperature: temp_c,
-            windSpeed: wind_kph,
-            windDir: wind_dir
-        }; */
-    })
-	.catch(err => console.error(err));
+    import { getWeatherFrom } from "../services/weather";
+    import WeatherFooter from "../components/weather-footer.svelte";
+    const weatherPromise = getWeatherFrom()
 </script>
-
+<!-- Con la etiqueta {#await <Promesa> then <respuesta de la promesa>} esperamos a la resolucion de la promesa -->
 {#await weatherPromise then weather}
-<h1>{weather.location.name}</h1>
+<section>
+    <h1>{weather.locationName}</h1>
+    <h2>{weather.temperature}°</h2>
+    <h3>{weather.conditionText}</h3>
+    <h4>{weather.windSpeed} Km/h</h4>
+</section>
+<WeatherFooter />
 {/await}
 
-<h1>Lo que se está renderizando</h1>
 
 <style>
+    section{
+        padding: 16px;
+    }
     h1{
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-weight: 300;
+        color: #333;
+        text-transform: uppercase;
+        padding: 16px 0 0 0;
+    }
+    h2{
+        font-weight: 300;
+        font-size: 150px;
+        color: #333;
+        text-transform: uppercase;
+        padding: 0
+    }
+    h3{
+        font-weight: 700;
+        transform: rotate(-90deg);
+        position: absolute;
+        top: 56px;
+        right: 12px;
     }
 </style>
