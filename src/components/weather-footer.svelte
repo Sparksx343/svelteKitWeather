@@ -1,14 +1,22 @@
+<script>
+    export let data = {
+        humidity:'',
+        windSpeed:'',
+        feelsLike: ''
+    }
+</script>
+
 <footer>
     <div>
-        <span>33%</span>
+        <span>{data.humidity}</span>
         <strong>Humidity</strong>
     </div>
     <div>
-        <span>12</span>
+        <span>{data.windSpeed}</span>
         <strong>km/h</strong>
     </div>
     <div>
-        <span>30C°</span>
+        <span>{data.feelsLike}</span>
         <strong>Feelslike</strong>
     </div>
 </footer>

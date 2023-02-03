@@ -9,9 +9,9 @@
     <h1>{weather.locationName}</h1>
     <h2>{weather.temperature}°</h2>
     <h3>{weather.conditionText}</h3>
-    <h4>{weather.windSpeed} Km/h</h4>
+    <h4>It´s {weather.isDay == 1 ? 'daytime' : 'nighttime'}</h4>
 </section>
-<WeatherFooter />
+<WeatherFooter data={weather} />
 {/await}
 
 
@@ -20,7 +20,7 @@
         padding: 16px;
     }
     h1{
-        font-weight: 300;
+        font-weight: 400;
         color: #333;
         text-transform: uppercase;
         padding: 16px 0 0 0;
@@ -33,10 +33,10 @@
         padding: 0
     }
     h3{
-        font-weight: 700;
+        font-weight: 600;
         transform: rotate(-90deg);
         position: absolute;
-        top: 56px;
-        right: 12px;
+        bottom: 60vh;
+        right: 0px;
     }
 </style>

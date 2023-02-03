@@ -29,5 +29,7 @@
         box-shadow: 0 0 100px rgba(0,0,0,0.1);
         border-radius: 8px;
         position: relative;
+        background-image: url('https://png.pngtree.com/thumb_back/fh260/back_our/20190625/ourmid/pngtree-blue-arc-weather-background-image_253195.jpg');
+        background-repeat: round;
     }
 </style>
