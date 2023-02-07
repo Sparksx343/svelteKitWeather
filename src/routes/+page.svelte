@@ -1,10 +1,21 @@
 <script>
     import { getWeatherFrom } from "../services/weather";
     import WeatherFooter from "../components/weather-footer.svelte";
+	import PreLoader from "../components/preloader.svelte";
+
     const weatherPromise = getWeatherFrom()
+    let test = true
+
+    function deten() {
+        test = false
+        return ''
+    }
+
 </script>
 <!-- Con la etiqueta {#await <Promesa> then <respuesta de la promesa>} esperamos a la resolucion de la promesa -->
+    <PreLoader loading={test} />
 {#await weatherPromise then weather}
+{deten()}
 <section>
     <h1>{weather.locationName}</h1>
     <h2>{weather.temperature}°</h2>
@@ -13,7 +24,6 @@
 </section>
 <WeatherFooter data={weather} />
 {/await}
-
 
 <style>
     section{
